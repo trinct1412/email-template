@@ -81,6 +81,8 @@ def output_error():
         while True:
             customer = (yield)
             print(customer)
+            print(file_mail)
+            print(file_mail.errors)
             with open(file_mail.errors, 'a+') as f:
                 print(f)
                 f_csv = csv.writer(f)

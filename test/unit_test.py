@@ -1,9 +1,8 @@
-import os
-import csv
 import json
 import unittest
-from ..send_email import auto_generate_folder, get_template, output_error, Customer
-from mock import patch, mock_open, MagicMock
+import os
+from ..send_email import auto_generate_folder, get_template, output_error, Customer, file_mail
+from mock import patch, mock_open, MagicMock, Mock
 from ..send_email import datetime_, default_dir
 
 
@@ -56,13 +55,19 @@ class TestSendMail(unittest.TestCase):
         actual_output = get_template()
         self.assertEqual(expected_output, actual_output)
 
-    @patch("builtins.open", new_callable=mock_open, create=True)
     @patch('pi.send_email.csv')
-    def test_output_error(self, mock_open, mock_csv):
+    def test_output_error(self, mock_csv):
         ope = output_error()
         ope.__next__()
         customer = Customer(*('Mr', 'Michelle', 'ba', 'nan'))
+        open_mock = mock_open()
         ope.send(customer)
+        with patch('pi.send_email.file_mail') as mock_file_mail:
+            mock_file_mail._make.return_value = './file_mail.csv'
+        mock_csv.writer = Mock(writerow=Mock())
+        self.assertEqual(mock_csv.writer.call_count, 2)
+
+        open_mock.return_value.writerow.assert_called_once_with(customer)
         ope.close()
 
 
