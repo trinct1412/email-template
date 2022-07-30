@@ -33,13 +33,6 @@ Run Project By Docker:
     1. pip freeze > requirements.txt
     2. docker-compose up
 
-Tutorial Curl :
-    
-    1. First you need call api to get Token:
-       - curl -X POST "http://localhost:8000/api/users/token/" -H  "accept: application/json" -H  "Content-Type: application/json" -H  "X-CSRFToken: O8AESU8podSIZYorLrwc162N7ZdvVkdZpmouAROiTo9BzOSeGjRcBq9oljKG58i8" -d "{  \"username\": \"a\",  \"password\": \"1\"}"
-    2. Second you change token below after beer:
-       - curl -X POST "http://localhost:8000/api/users/assignment/" -H  "accept: application/json" -H  "Content-Type: application/json" -H  "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU2MTMzNjk3LCJpYXQiOjE2NTYxMzMzOTcsImp0aSI6IjM2Y2I4ZjI5ZjU4MTQ5OTM4Zjk2MmQzY2YwN2M0M2QyIiwidXNlcl9pZCI6MX0.wdalVmB7jSka1gWiBCvtxgBqP9jrwNP6Ml9TI8SPsc4" -d "{  \"task\": 1,  \"user\": 2,  \"date\": \"2022-06-23\"}"
-
 Tutorial Test :
 
     1. Unit test:
