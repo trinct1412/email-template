@@ -38,7 +38,7 @@
     1. Unit test:
        - python -m unittest test.unit_test
 
-###What do you love about your solution?
+### What do you love about your solution?
  - About design:
    - I choose the coroutine to design because i will expand the feature for send mail by SMTP in the future
  - About the Project:
